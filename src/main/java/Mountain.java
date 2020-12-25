@@ -14,7 +14,7 @@ public class Mountain extends  BaseIdentity{
     @Column (nullable = false)
     private int heightMountain;
     @OneToMany (mappedBy = "mountain")
-    List<GroupForUp> groupForUpList = new ArrayList<>();
+    private List<GroupForUp> groupForUpList = new ArrayList<>();
 
     public Mountain(String nameMountain, String countryMountain, int heightMountain) {
        setCountryMountain(countryMountain);
