@@ -1,4 +1,4 @@
-import org.hibernate.query.Query;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

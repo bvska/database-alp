@@ -1,9 +1,6 @@
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
-import javax.xml.crypto.Data;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 
