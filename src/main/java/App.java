@@ -35,7 +35,8 @@ public class App {
         System.out.println(group.toString());
         group.setClimberList(lena);
 
-        manager.getTransaction().begin();;
+
+        manager.getTransaction().begin();
         mountainDao.add(kavkaz);
         mountainDao.add(ural);
         groupDao.add(group);
@@ -48,8 +49,9 @@ public class App {
         climberDao.add(sonya);
         climberDao.add(lena);
 
-
         manager.getTransaction().commit();
+
+
 
 
        System.out.println(climberDao.getAge(24, 45));

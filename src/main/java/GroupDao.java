@@ -72,10 +72,8 @@ public class GroupDao implements Dao<GroupForUp>{
         Query query = manager.createQuery(criteriaQuery.select(join).select(join.get("dateLength")));
         try {
             date = (LocalDate) query.getSingleResult();
-            System.out.println(date);
             return date;
         } catch (NoResultException e){
-            System.out.println(LocalDate.now());
             return LocalDate.now();
         }
 
