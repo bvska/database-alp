@@ -1,6 +1,9 @@
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -59,16 +62,24 @@ public class GroupDao implements Dao<GroupForUp>{
         return  groups;
     }
 
-    public  List<GroupForUp> getMountainGroup1(int id){
-        List<GroupForUp> groupList;
+    public LocalDate getMountainGroup1(int id){
+        LocalDate date;
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<GroupForUp> criteriaQuery = builder.createQuery(GroupForUp.class);
         Root<Climber> root = criteriaQuery.from(Climber.class);
         criteriaQuery.where(builder.equal(root.get(Climber_.id), id));
         Join<Climber, GroupForUp> join = root.join(Climber_.groupForUp, JoinType.LEFT);
-        TypedQuery<GroupForUp> query = manager.createQuery(criteriaQuery.select(join));
-        groupList = query.getResultList();
-        return groupList;
+        Query query = manager.createQuery(criteriaQuery.select(join).select(join.get("dateLength")));
+        try {
+            date = (LocalDate) query.getSingleResult();
+            System.out.println(date);
+            return date;
+        } catch (NoResultException e){
+            System.out.println(LocalDate.now());
+            return LocalDate.now();
+        }
+
+
     }
 
 

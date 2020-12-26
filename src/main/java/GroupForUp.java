@@ -48,7 +48,13 @@ public class GroupForUp extends BaseIdentity {
 
     public void setClimberList(Climber name) {
         if (getAccess()) {
-                climberList.add(name);}
+            Test test = new Test();
+            if (getDateUp().isAfter(test.getValid(name))) {
+                climberList.add(name);
+            }
+            else {
+            System.out.println("в это время вы еще в походе.");}
+        }
     }
 
     public boolean getAccess() {

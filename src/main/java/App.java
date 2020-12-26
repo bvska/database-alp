@@ -3,6 +3,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -23,9 +25,10 @@ public class App {
         Mountain ural = new Mountain("ГораУрал", "Россия", 3600 );
 
         LocalDate start1 = LocalDate.of(2021, Month.JANUARY, 20);
+        LocalDate end1 = LocalDate.of(2021, Month.JANUARY, 26);
         LocalDate start2 = LocalDate.of(2021, Month.APRIL, 13);
         LocalDate end2 = LocalDate.of(2021, Month.APRIL, 21);
-        LocalDate end1 = LocalDate.of(2021, Month.JANUARY, 26);
+
         GroupForUp group = new GroupForUp(kavkaz, true, start1, end1);
         GroupForUp group2 = new GroupForUp(ural, false, start2, end2);
         GroupForUp group3 = new GroupForUp(ural, true, start1, end1);
@@ -54,6 +57,7 @@ public class App {
         System.out.println(mountainDao.getMountain("Россия"));
         System.out.println(groupDao.getAll());
       System.out.println(groupDao.getMountainGroup("Эльбрус"));
+
 
 
 
